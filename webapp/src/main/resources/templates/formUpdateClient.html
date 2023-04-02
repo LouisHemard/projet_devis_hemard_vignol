@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<title>Client Web Application</title>
+
+<style>
+body {
+	padding-top: 50px;
+	background: lightgray;
+}
+
+.special {
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/client">Système de gestion des clients</a>
+				<a class="navbar-brand" href="/produit">Système de gestion des produits</a>
+				<a class="navbar-brand" href="/devis">Système de gestion des produits</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container special">
+
+		<h2 class="h2">Modification d'un client</h2>
+		<div>
+			<form method="post"
+				th:action="@{/saveclient}" th:object="${client}">
+				<div class="form-group">
+					<input
+							type="hidden" th:field="*{id}" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="societeNomInput">Nom de l'entreprise</label>
+					<input
+							type="text" th:field="*{societeNom}" class="form-control" id="societeNomInput"
+							aria-describedby="societeNomHelp" placeholder="Saisir le nom de l'entreprise"> <small
+						id="societeNomHelp" class="form-text text-muted">Merci d'écrire le nom de l'entreprise.</small>
+				</div>
+				<div class="form-group">
+					<label for="mailInput">Adresse Mail</label>
+					<input
+							type="text" th:field="*{mail}" class="form-control" id="mailInput"
+							aria-describedby="mailHelp" placeholder="Saisir l'adresse mail de l'entreprise"> <small
+						id="mailHelp" class="form-text text-muted">Merci d'écrire l'adresse mail de l'entreprise.</small>
+				</div>
+				<div class="form-group">
+					<label for="telInput">Numero de téléphone</label>
+					<input
+							type="text" th:field="*{tel}" class="form-control" id="telInput"
+							aria-describedby="telHelp" placeholder="Saisir le numéro de téléphone de l'entreprise"> <small
+						id="telHelp" class="form-text text-muted">Merci d'écrire le numéros de téléphone de l'entreprise.</small>
+				</div>
+				<div class="form-group">
+					<label for="adresseInput">Adresse</label>
+					<input
+							type="text" th:field="*{adresse}" class="form-control" id="adresseInput"
+							aria-describedby="adresseHelp" placeholder="Saisir l'adresse de l'entreprise"> <small
+						id="adresseHelp" class="form-text text-muted">Merci d'écrire l'adresse de l'entreprise.</small>
+				</div>
+				<div class="form-group">
+					<label for="codePostalInput">Code Postal</label>
+					<input
+							type="text" th:field="*{codePostal}" class="form-control" id="codePostalInput"
+							aria-describedby="codePostalHelp" placeholder="Saisir le Code Postal de l'entreprise"> <small
+						id="codePostalHelp" class="form-text text-muted">Merci d'écrire le Code Postal de l'entreprise.</small>
+				</div>
+				<div class="form-group">
+					<label for="villeInput">Ville</label>
+					<input
+							type="text" th:field="*{ville}" class="form-control" id="villeInput"
+							aria-describedby="villeHelp" placeholder="Saisir la ville de l'entreprise"> <small
+						id="villeHelp" class="form-text text-muted">Merci d'écrire la ville de l'entreprise.</small>
+				</div>
+				<div class="form-group">
+					<label for="paysInput">Pays</label>
+					<input
+							type="text" th:field="*{pays}" class="form-control" id="paysInput"
+							aria-describedby="paysHelp" placeholder="Saisir le pays de l'entreprise"> <small
+						id="paysHelp" class="form-text text-muted">Merci d'écrire le pays de l'entreprise.</small>
+				</div>
+				<button type="submit" class="btn btn-primary">Modifier</button>
+			</form>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>

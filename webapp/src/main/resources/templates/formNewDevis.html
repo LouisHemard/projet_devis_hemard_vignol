@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<title>Devis Web Application</title>
+
+<style>
+body {
+	padding-top: 50px;
+	background: lightgray;
+}
+
+.special {
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/client">Système de gestion des clients</a>
+			<a class="navbar-brand" href="/produit">Système de gestion des produits</a>
+			<a class="navbar-brand" href="/devis">Système de gestion des devis</a>
+		</div>
+	</div>
+</nav>
+
+<div class="container special">
+	<h2 class="h2">Ajout d'un nouveau devis</h2>
+	<div>
+		<form method="post" th:action="@{/savedevis}" th:object="${devis}">
+			<div class="form-group">
+				<label for="clientInput">Nom du Client</label>
+				<select name="client" id="clientInput" class="form-control">
+					<option value="">Sélectionner un client</option>
+					<th:block th:each="client : ${clients}">
+						<option th:value="${client.id}" th:text="${client.societeNom}">Merci de selectionner un client</option>
+					</th:block>
+				</select>
+				<small id="clientHelp" class="form-text text-muted">Merci de selectionner le client du devis.</small>
+			</div>
+			<div class="form-group">
+				<label for="dateInput">Date</label>
+				<input type="date" th:field="*{date_creation}" class="form-control" id="dateInput" aria-describedby="dateHelp">
+				<small id="dateHelp" class="form-text text-muted">Merci de choisir la date du devis.</small>
+			</div>
+			<div class="form-group">
+				<label for="descriptionInput">Description du devis</label>
+				<input type="text" th:field="*{description}" class="form-control" id="descriptionInput"
+					   aria-describedby="descriptionHelp" placeholder="Saisir la description du devis">
+				<small id="descriptionHelp" class="form-text text-muted">Merci d'écrire la description du devis.</small>
+			</div>
+			<div class="form-group">
+				<label for="productInput">Produit</label>
+				<select name="product" id="productInput" class="form-control">
+					<option value="">Sélectionner un produit</option>
+					<th:block th:each="produit : ${produit}">
+						<option th:value="${produit.id}" th:text="${produit.nom}"></option>
+					</th:block>
+				</select>
+				<small id="produitHelp" class="form-text text-muted">Merci de selectionner un produit du devis.</small>
+			</div>
+			<div class="form-group">
+				<label for="quantityInput">Quantité</label>
+				<input type="number" th:field="*{DevisProduit.quantite}" class="form-control" id="quantityInput"
+					   aria-describedby="quantityHelp" placeholder="Saisir la quantité">
+				<small id="quantityHelp" class="form-text text-muted">Merci d'écrire la quantité.</small>
+			</div>
+			<div class="form-group">
+				<label for="uniteInput">Quantité</label>
+				<input type="number" th:field="*{DevisProduit.quantite}" class="form-control" id="uniteInput"
+					   aria-describedby="uniteHelp" placeholder="Selectionner l'unité">
+				<small id="uniteHelp" class="form-text text-muted">Merci de selectionner l'unité de la quantité.</small>
+			</div>
+			<button type="submit" class="btn btn-success">Ajouter Produit</button>
+			<button type="submit" class="btn btn-primary">Créer</button>
+		</form>
+	</div>
+</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>

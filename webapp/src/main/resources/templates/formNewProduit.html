@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<title>Produit Web Application</title>
+
+<style>
+body {
+	padding-top: 50px;
+	background: lightgray;
+}
+
+.special {
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/client">Système de gestion des clients</a>
+				<a class="navbar-brand" href="/produit">Système de gestion des produits</a>
+				<a class="navbar-brand" href="/devis">Système de gestion des devis</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container special">
+
+		<h2 class="h2">Ajout d'un nouveau produit</h2>
+		<div>
+			<form method="post"
+				th:action="@{/saveproduit}" th:object="${produit}">
+				<div class="form-group">
+					<label for="produitNomInput">Nom du produit</label>
+					<input
+						type="text" th:field="*{nom}" class="form-control" id="produitNomInput"
+						aria-describedby="produitNomHelp" placeholder="Saisir le nom du produit"> <small
+						id="produitNomHelp" class="form-text text-muted">Merci d'écrire le nom du produit</small>
+				</div>
+				<div class="form-group">
+					<label for="descriptionInput">Description</label>
+					<input
+						type="text" th:field="*{description}" class="form-control" id="descriptionInput"
+						aria-describedby="descriptionHelp" placeholder="Saisir la description du produit"> <small
+						id="descriptionHelp" class="form-text text-muted">Merci d'écrire la description du produit.</small>
+				</div>
+				<div class="form-group">
+					<label for="largeurInput">Largeur</label>
+					<input
+							type="text" th:field="*{largeur}" class="form-control" id="largeurInput"
+							aria-describedby="largeurHelp" placeholder="Saisir la largeur du produit"> <small
+						id="largeurHelp" class="form-text text-muted">Merci d'écrire la largeur du produit.</small>
+				</div>
+				<div class="form-group">
+					<label for="longueurInput">Longueur</label>
+					<input
+							type="text" th:field="*{longueur}" class="form-control" id="longueurInput"
+							aria-describedby="longueurHelp" placeholder="Saisir la longueur du produit"> <small
+						id="longueurHelp" class="form-text text-muted">Merci d'écrire la longueur du produit</small>
+				</div>
+				<div class="form-group">
+					<label for="hauteurInput">Hauteur</label>
+					<input
+							type="text" th:field="*{hauteur}" class="form-control" id="hauteurInput"
+							aria-describedby="hauteurHelp" placeholder="Saisir la hauteur du produit"> <small
+						id="hauteurHelp" class="form-text text-muted">Merci d'écrire la hauteur du produit.</small>
+				</div>
+				<div class="form-group">
+					<label for="ecartInput">Écart</label>
+					<input
+							type="text" th:field="*{ecart}" class="form-control" id="ecartInput"
+							aria-describedby="ecartHelp" placeholder="Saisir l'écart du produit"> <small
+						id="ecartHelp" class="form-text text-muted">Merci d'écrire l'ecart du produit.</small>
+				</div>
+				<div class="form-group">
+					<label for="estComposant">Est utilisé pour la production d'un autre produit</label>
+					<select class="form-control" id="estComposant" th:field="*{estComposant}">
+						<option value="true">Oui</option>
+						<option value="false">Non</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="estCompose">Est fabriqué à partir d'autre produit</label>
+					<select class="form-control" id="estCompose" th:field="*{estCompose}">
+						<option value="true">Oui</option>
+						<option value="false">Non</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary">Créer</button>
+			</form>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>
